@@ -32,8 +32,6 @@
 		C3DFABDB26A917F70008B6FD /* practica_shader_class.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = practica_shader_class.fs; sourceTree = "<group>"; };
 		C3DFABDC26A917F70008B6FD /* practica_shader_class.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = practica_shader_class.vs; sourceTree = "<group>"; };
 		C3DFABDD26A9255A0008B6FD /* paisaje.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paisaje.jpg; sourceTree = "<group>"; };
-		C3DFABDE26A9256A0008B6FD /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
-		C3DFABDF26A92B740008B6FD /* paisaje-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "paisaje-2.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +94,6 @@
 		C3DFABDA26A9174A0008B6FD /* textures */ = {
 			isa = PBXGroup;
 			children = (
-				C3DFABDF26A92B740008B6FD /* paisaje-2.jpg */,
-				C3DFABDE26A9256A0008B6FD /* container.jpg */,
 				C3DFABDD26A9255A0008B6FD /* paisaje.jpg */,
 			);
 			path = textures;
