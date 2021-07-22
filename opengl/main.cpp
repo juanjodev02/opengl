@@ -40,9 +40,10 @@ int main()
     }
 
     Shader ourShader("shaders/practica_shader_class.vs", "shaders/practica_shader_class.fs");
+    Shader ourShader2("shaders/practica_shader_class-2.vs", "shaders/practica_shader_class-2.fs");
     
     //Iniciamos los vertices
-    float vertices[] = {
+    float vertices_1[] = {
         //triangle 1
         // positions            // colors               // texture position
         0.0f, 0.5f, 0.0f,       0.2f, 0.6f, 1.0f,       0.5f, 1.0f,     // A
@@ -58,6 +59,9 @@ int main()
         0.0f, 0.2f, 0.0f,       1.0f, 0.8f, 0.0f,       0.5f, 0.7f,     // D
         0.0f, -0.25f, 0.0f,     1.0f, 0.8f, 0.0f,       0.5f, 0.25f,     // I
         0.3f, -0.25f, 0.0f,     1.0f, 0.8f, 0.0f,       0.8f, 0.25f,     // J
+    };
+    
+    fload vertices_2[] = {
         //triangle 4
         // positions            // colors               // texture position
         -0.2f, 0.0f, 0.0f,      1.0f, 0.4f, 0.4f,       0.3f, 0.5f,     // E
@@ -88,10 +92,9 @@ int main()
         0.05f, -0.3f, 0.0f,     0.4f, 0.4f, 0.8f,       0.55f, 0.2f,    // O
         0.05f, -0.45f, 0.0f,    0.4f, 0.4f, 0.8f,       0.55f, 0.05f,   // M
         0.2f, -0.3f, 0.0f,      0.4f, 0.4f, 0.8f,       0.7f, 0.2f,      // N
-        
     };
 
-    unsigned int VBO, VAO;
+    unsigned int VBOs[2], VAOs[2];
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
 

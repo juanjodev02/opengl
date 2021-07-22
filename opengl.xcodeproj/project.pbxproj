@@ -25,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3A769F226A9D3C9007DAFDC /* practica_shader_class-2.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "practica_shader_class-2.vs"; sourceTree = "<group>"; };
+		C3A769F326A9D3C9007DAFDC /* practica_shader_class-2.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "practica_shader_class-2.fs"; sourceTree = "<group>"; };
 		C3DFABCA26A915D30008B6FD /* opengl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = opengl; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DFABCD26A915D30008B6FD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C3DFABD526A916C20008B6FD /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.4/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		C3DFABD926A917410008B6FD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				C3A769F326A9D3C9007DAFDC /* practica_shader_class-2.fs */,
+				C3A769F226A9D3C9007DAFDC /* practica_shader_class-2.vs */,
 				C3DFABDB26A917F70008B6FD /* practica_shader_class.fs */,
 				C3DFABDC26A917F70008B6FD /* practica_shader_class.vs */,
 			);
