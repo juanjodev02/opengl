@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3DFABCE26A915D30008B6FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DFABCD26A915D30008B6FD /* main.cpp */; };
+		C36EBD7C26C1B193005948E7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36EBD7B26C1B193005948E7 /* main.cpp */; };
 		C3DFABD626A916C20008B6FD /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DFABD526A916C20008B6FD /* libglfw.3.3.dylib */; };
 		C3DFABD826A916FF0008B6FD /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = C3DFABD726A916FF0008B6FD /* glad.c */; };
 /* End PBXBuildFile section */
@@ -25,15 +25,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C3A769F226A9D3C9007DAFDC /* practica_shader_class-2.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "practica_shader_class-2.vs"; sourceTree = "<group>"; };
-		C3A769F326A9D3C9007DAFDC /* practica_shader_class-2.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "practica_shader_class-2.fs"; sourceTree = "<group>"; };
+		C36EBD7B26C1B193005948E7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C36EBD7D26C1B2DE005948E7 /* texture1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture1.jpg; sourceTree = "<group>"; };
+		C36EBD7E26C1B2DE005948E7 /* texture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture2.jpg; sourceTree = "<group>"; };
+		C36EBD7F26C1B2E9005948E7 /* shader_exercise10.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise10.fs; sourceTree = "<group>"; };
+		C36EBD8026C1B2E9005948E7 /* shader_exercise10.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise10.vs; sourceTree = "<group>"; };
 		C3DFABCA26A915D30008B6FD /* opengl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = opengl; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3DFABCD26A915D30008B6FD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C3DFABD526A916C20008B6FD /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.4/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		C3DFABD726A916FF0008B6FD /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
-		C3DFABDB26A917F70008B6FD /* practica_shader_class.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = practica_shader_class.fs; sourceTree = "<group>"; };
-		C3DFABDC26A917F70008B6FD /* practica_shader_class.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = practica_shader_class.vs; sourceTree = "<group>"; };
-		C3DFABDD26A9255A0008B6FD /* paisaje.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paisaje.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +70,7 @@
 				C3DFABDA26A9174A0008B6FD /* textures */,
 				C3DFABD926A917410008B6FD /* shaders */,
 				C3DFABD726A916FF0008B6FD /* glad.c */,
-				C3DFABCD26A915D30008B6FD /* main.cpp */,
+				C36EBD7B26C1B193005948E7 /* main.cpp */,
 			);
 			path = opengl;
 			sourceTree = "<group>";
@@ -87,10 +86,8 @@
 		C3DFABD926A917410008B6FD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				C3A769F326A9D3C9007DAFDC /* practica_shader_class-2.fs */,
-				C3A769F226A9D3C9007DAFDC /* practica_shader_class-2.vs */,
-				C3DFABDB26A917F70008B6FD /* practica_shader_class.fs */,
-				C3DFABDC26A917F70008B6FD /* practica_shader_class.vs */,
+				C36EBD7F26C1B2E9005948E7 /* shader_exercise10.fs */,
+				C36EBD8026C1B2E9005948E7 /* shader_exercise10.vs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -98,7 +95,8 @@
 		C3DFABDA26A9174A0008B6FD /* textures */ = {
 			isa = PBXGroup;
 			children = (
-				C3DFABDD26A9255A0008B6FD /* paisaje.jpg */,
+				C36EBD7D26C1B2DE005948E7 /* texture1.jpg */,
+				C36EBD7E26C1B2DE005948E7 /* texture2.jpg */,
 			);
 			path = textures;
 			sourceTree = "<group>";
@@ -159,7 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3DFABCE26A915D30008B6FD /* main.cpp in Sources */,
+				C36EBD7C26C1B193005948E7 /* main.cpp in Sources */,
 				C3DFABD826A916FF0008B6FD /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
