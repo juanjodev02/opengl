@@ -33,6 +33,8 @@
 		C3DFABCA26A915D30008B6FD /* opengl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = opengl; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DFABD526A916C20008B6FD /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.4/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		C3DFABD726A916FF0008B6FD /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
+		C3ECC0C126CC387D003FAA5C /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
+		C3ECC0C226CC387D003FAA5C /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,8 @@
 		C3DFABDA26A9174A0008B6FD /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				C3ECC0C226CC387D003FAA5C /* awesomeface.png */,
+				C3ECC0C126CC387D003FAA5C /* container.jpg */,
 				C36EBD7D26C1B2DE005948E7 /* texture1.jpg */,
 				C36EBD7E26C1B2DE005948E7 /* texture2.jpg */,
 			);
