@@ -30,6 +30,10 @@
 		C36EBD7E26C1B2DE005948E7 /* texture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture2.jpg; sourceTree = "<group>"; };
 		C36EBD7F26C1B2E9005948E7 /* shader_exercise10.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise10.fs; sourceTree = "<group>"; };
 		C36EBD8026C1B2E9005948E7 /* shader_exercise10.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise10.vs; sourceTree = "<group>"; };
+		C398410526CDC011006A9866 /* shader_exercise11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise11.vs; sourceTree = "<group>"; };
+		C398410626CDC011006A9866 /* shader_exercise11.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise11.fs; sourceTree = "<group>"; };
+		C398410726CDC0B9006A9866 /* tnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tnt.png; sourceTree = "<group>"; };
+		C398410826CDC0B9006A9866 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		C3DFABCA26A915D30008B6FD /* opengl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = opengl; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DFABD526A916C20008B6FD /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.4/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		C3DFABD726A916FF0008B6FD /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		C3DFABD926A917410008B6FD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				C398410626CDC011006A9866 /* shader_exercise11.fs */,
+				C398410526CDC011006A9866 /* shader_exercise11.vs */,
 				C36EBD7F26C1B2E9005948E7 /* shader_exercise10.fs */,
 				C36EBD8026C1B2E9005948E7 /* shader_exercise10.vs */,
 			);
@@ -97,6 +103,8 @@
 		C3DFABDA26A9174A0008B6FD /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				C398410826CDC0B9006A9866 /* fire.png */,
+				C398410726CDC0B9006A9866 /* tnt.png */,
 				C3ECC0C226CC387D003FAA5C /* awesomeface.png */,
 				C3ECC0C126CC387D003FAA5C /* container.jpg */,
 				C36EBD7D26C1B2DE005948E7 /* texture1.jpg */,

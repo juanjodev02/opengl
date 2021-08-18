@@ -40,7 +40,7 @@ int main()
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Exercise 12 Task 4", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Juan Jaramillo", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -63,52 +63,59 @@ int main()
     glEnable(GL_DEPTH_TEST);
     
     // Load Shaders
-    Shader ourShader("shaders/shader_exercise10.vs", "shaders/shader_exercise10.fs");
+    Shader ourShader("shaders/shader_exercise11.vs", "shaders/shader_exercise11.fs");
     
     // Setup position vectors
     float vertices[] = {
     // positions          // texture coords
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+    //CARA ATRÁS
+    -0.5f, -0.5f, -0.5f,  0.725f, 0.326f,
+     0.5f, -0.5f, -0.5f,  0.933f, 0.326f,
+     0.5f,  0.5f, -0.5f,  0.933f, 0.58f,
+     0.5f,  0.5f, -0.5f,  0.933f, 0.58f,
+    -0.5f,  0.5f, -0.5f,  0.725f, 0.58f,
+    -0.5f, -0.5f, -0.5f,  0.725f, 0.326f,
 
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    //CARA FRONTAL
+    -0.5f, -0.5f,  0.5f,  0.3f, 0.31f,
+     0.5f, -0.5f,  0.5f,  0.51f, 0.31f,
+     0.5f,  0.5f,  0.5f,  0.51f, 0.58f,
+     0.5f,  0.5f,  0.5f,  0.51f, 0.58f,
+    -0.5f,  0.5f,  0.5f,  0.3f, 0.58f,
+    -0.5f, -0.5f,  0.5f,  0.3f, 0.31f,
 
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    //CARA IZQUIERDA
+    -0.5f,  0.5f,  0.5f,  0.085f, 0.58f,
+    -0.5f,  0.5f, -0.5f,  0.295f, 0.58f,
+    -0.5f, -0.5f, -0.5f,  0.295f, 0.33f,
+    -0.5f, -0.5f, -0.5f,  0.295f, 0.33f,
+    -0.5f, -0.5f,  0.5f,  0.085f, 0.33f,
+    -0.5f,  0.5f,  0.5f,  0.085f, 0.58f,
 
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    //CARA DERECHA
+     0.5f,  0.5f,  0.5f,  0.51f, 0.58f,
+     0.5f,  0.5f, -0.5f,  0.72f, 0.58f,
+     0.5f, -0.5f, -0.5f,  0.72f, 0.326f,
+     0.5f, -0.5f, -0.5f,  0.72f, 0.326f,
+     0.5f, -0.5f,  0.5f,  0.51f, 0.326f,
+     0.5f,  0.5f,  0.5f,  0.51f, 0.58f,
 
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
 
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+     //CARA ABAJO
+    -0.5f, -0.5f, -0.5f,  0.3f, 0.32f,
+     0.5f, -0.5f, -0.5f,  0.51f, 0.32f,
+     0.5f, -0.5f,  0.5f,  0.51f, 0.07f,
+     0.5f, -0.5f,  0.5f,  0.51f, 0.07f,
+    -0.5f, -0.5f,  0.5f,  0.3f, 0.07f,
+    -0.5f, -0.5f, -0.5f,  0.3f, 0.32f,
+
+    //CARA ARRIBA
+    -0.5f,  0.5f, -0.5f,  0.3f, 0.83f,
+     0.5f,  0.5f, -0.5f,  0.3f, 0.57f,
+     0.5f,  0.5f,  0.5f,  0.51f, 0.57f,
+     0.5f,  0.5f,  0.5f,  0.51f, 0.57f,
+    -0.5f,  0.5f,  0.5f,  0.51f, 0.83f,
+    -0.5f,  0.5f, -0.5f,  0.3f, 0.83f
     };
 
     // Define world positions for each cubes
@@ -120,9 +127,7 @@ int main()
         glm::vec3(2.4f, -0.4f, -3.5f),
         glm::vec3(-1.7f,  3.0f, -7.5f),
         glm::vec3(1.3f, -2.0f, -2.5f),
-        glm::vec3(1.5f,  2.0f, -2.5f),
-        glm::vec3(1.5f,  0.2f, -1.5f),
-        glm::vec3(-1.3f,  1.0f, -1.5f)
+        glm::vec3(1.5f,  2.0f, -2.5f)
     };
 
     // Define VBO and VAO
@@ -153,10 +158,11 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true);
-    unsigned char* data = stbi_load("textures/container.jpg", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("textures/tnt.png", &width, &height, &nrChannels, 0);
     if (data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        // Change config to use .png files
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
@@ -171,7 +177,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    data = stbi_load("textures/awesomeface.png", &width, &height, &nrChannels, 0);
+    data = stbi_load("textures/fire.png", &width, &height, &nrChannels, 0);
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -198,9 +204,9 @@ int main()
 
         // Use textures
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture1);
+
         glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture2);
+        
 
         // Activate shaders
         ourShader.use();
@@ -216,17 +222,32 @@ int main()
         // Use VAO
         glBindVertexArray(VAO);
 
-        // Render one cube for each position vectors
-        for (unsigned int i = 0; i < 10; i++)
+        // Render one cube for each position vectors using first texture
+        for (unsigned int i = 0; i < 5; i++)
         {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
-            if (i % 3 == 0)
+            if (i % 2 == 0)
                 angle = glfwGetTime() * 25.0f;
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             ourShader.setMat4("model", model);
-
+            // Use first texture
+            glBindTexture(GL_TEXTURE_2D, texture1);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+        
+        for (unsigned int i = 5; i < 8; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            if (i % 2 == 0)
+                angle = glfwGetTime() * 25.0f;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            ourShader.setMat4("model", model);
+            // Use first texture
+            glBindTexture(GL_TEXTURE_2D, texture2);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
