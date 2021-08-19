@@ -30,6 +30,13 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+// Ligth settings
+glm::vec3 lightPos1(1.2f, 1.0f, 2.0f);
+glm::vec3 lightPos2(-1.2f, 1.0f, -2.0f);
+
+glm::vec4 ligthPos1Color (1.0f); //white
+glm::vec4 ligthPos2Color (1.0f, 0.0f, 0.0f, 1.0f); //red
+
 int main()
 {
     glfwInit();
@@ -64,6 +71,8 @@ int main()
     
     // Load Shaders
     Shader ourShader("shaders/shader_exercise11.vs", "shaders/shader_exercise11.fs");
+    Shader lightCubeShader("shaders/shader_exercise13_lightcube.vs", "shaders/shader_exercise13_lightcube.fs");
+
     
     // Setup position vectors
     float vertices[] = {
@@ -145,6 +154,16 @@ int main()
     // Texture coord attribute
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    
+    //configure light VAO
+    unsigned int lightCubeVAO;
+    glGenVertexArrays(1, &lightCubeVAO);
+    glBindVertexArray(lightCubeVAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
 
 
     // Load Textures
@@ -250,6 +269,33 @@ int main()
             glBindTexture(GL_TEXTURE_2D, texture2);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
+        
+        
+        lightCubeShader.use();
+        glm::mat4 model = glm::mat4(1.0f);
+        lightCubeShader.setMat4("projection", projection);
+        lightCubeShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos2);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        lightCubeShader.setMat4("model", model);
+        lightCubeShader.setVec4("ligthColor", ligthPos2Color);
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        
+        
+        // cube 2
+        lightCubeShader.use();
+        glm::mat4 model2 = glm::mat4(1.0f);
+        lightCubeShader.setMat4("projection", projection);
+        lightCubeShader.setMat4("view", view);
+        model2 = glm::mat4(1.0f);
+        model2 = glm::translate(model2, lightPos1);
+        model2 = glm::scale(model2, glm::vec3(0.2f)); // a smaller cube
+        lightCubeShader.setMat4("model", model2);
+        lightCubeShader.setVec4("ligthColor", ligthPos1Color);
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -257,6 +303,7 @@ int main()
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+    glDeleteVertexArrays(1, &lightCubeVAO);
     
     glfwTerminate();
     return 0;
