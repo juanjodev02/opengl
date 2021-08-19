@@ -117,6 +117,58 @@ int main()
     -0.5f,  0.5f,  0.5f,  0.51f, 0.83f,
     -0.5f,  0.5f, -0.5f,  0.3f, 0.83f
     };
+    
+    float vertices_2[] = {
+    // positions          // texture coords
+    //CARA ATRÁS
+    -0.5f, -0.5f, -0.5f,  0.252, 0.238f,
+     0.5f, -0.5f, -0.5f,  0.048, 0.238f,
+     0.5f,  0.5f, -0.5f,  0.048f, 0.51f,
+    0.5f,  0.5f, -0.5f,  0.048f, 0.51f,
+    -0.5f,  0.5f, -0.5f,  0.252f, 0.51f,
+    -0.5f, -0.5f, -0.5f,  0.252, 0.238f,
+
+    //CARA FRONTAL
+    -0.5f, -0.5f,  0.5f,  0.454f, 0.238f,
+     0.5f, -0.5f,  0.5f,  0.659f, 0.238f,
+     0.5f,  0.5f,  0.5f,  0.659f, 0.51f,
+    0.5f,  0.5f,  0.5f,  0.659f, 0.51f,
+    -0.5f,  0.5f,  0.5f,  0.454f, 0.51f,
+    -0.5f, -0.5f,  0.5f,  0.454f, 0.238f,
+
+    //CARA IZQUIERDA
+    -0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
+    -0.5f,  0.5f, -0.5f,  0.454f, 0.238f,
+    -0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
+    -0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
+    -0.5f, -0.5f,  0.5f,  0.454f, 0.51f,
+    -0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
+
+    //CARA DERECHA
+     0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
+     0.5f,  0.5f, -0.5f,  0.454f, 0.238f,
+     0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
+     0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
+     0.5f, -0.5f,  0.5f,  0.454f, 0.51f,
+     0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
+
+
+     //CARA ABAJO
+    -0.5f, -0.5f, -0.5f,  0.454, 0.32f,
+     0.5f, -0.5f, -0.5f,  0.659f, 0.32f,
+     0.5f, -0.5f,  0.5f,  0.659f, 0.238f,
+    0.5f, -0.5f,  0.5f,  0.659f, 0.238f,
+    -0.5f, -0.5f,  0.5f,  0.454f, 0.238f,
+    -0.5f, -0.5f, -0.5f,  0.454, 0.32f,
+
+    //CARA ARRIBA
+    -0.5f,  0.5f, -0.5f,  0.454f, 0.510f,
+     0.5f,  0.5f, -0.5f,  0.659f, 0.510f,
+     0.5f,  0.5f,  0.5f,  0.659f, 0.713f,
+    0.5f,  0.5f,  0.5f,  0.659f, 0.713f,
+    -0.5f,  0.5f,  0.5f,  0.454f, 0.713f,
+    -0.5f,  0.5f, -0.5f,  0.454f, 0.510f,
+    };
 
     // Define world positions for each cubes
     glm::vec3 cubePositions[] = {
@@ -127,7 +179,8 @@ int main()
         glm::vec3(2.4f, -0.4f, -3.5f),
         glm::vec3(-1.7f,  3.0f, -7.5f),
         glm::vec3(1.3f, -2.0f, -2.5f),
-        glm::vec3(1.5f,  2.0f, -2.5f)
+        glm::vec3(1.0f,  3.0f, -2.5f),
+        glm::vec3(1.5f,  5.0f, -1.5f)
     };
 
     // Define VBO and VAO
@@ -145,10 +198,25 @@ int main()
     // Texture coord attribute
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    
+    
+    unsigned int VAO2, VBO2;
+    // Init VAO and VBO
+    glGenVertexArrays(1, &VAO2);
+    glGenBuffers(1, &VBO2);
+    glBindVertexArray(VAO2);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO2);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices_2), vertices_2, GL_STATIC_DRAW);
+    // Position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // Texture coord attribute
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
 
     // Load Textures
-    unsigned int texture1, texture2;
+    unsigned int texture1, texture2, texture3;
     // Texture 1
     glGenTextures(1, &texture1);
     glBindTexture(GL_TEXTURE_2D, texture1);
@@ -187,10 +255,28 @@ int main()
     {
         std::cout << "Failed to load texture" << std::endl;
     }
+    //Texture 3
+    glGenTextures(1, &texture3);
+    glBindTexture(GL_TEXTURE_2D, texture3);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    data = stbi_load("textures/Texture3.jpg", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
     stbi_image_free(data);
     ourShader.use();
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
+    ourShader.setInt("texture3", 2);
 
     // Render Loop
     while (!glfwWindowShouldClose(window))
@@ -206,6 +292,8 @@ int main()
         glActiveTexture(GL_TEXTURE0);
 
         glActiveTexture(GL_TEXTURE1);
+        
+//        glActiveTexture(GL_TEXTURE2);
         
 
         // Activate shaders
@@ -223,31 +311,45 @@ int main()
         glBindVertexArray(VAO);
 
         // Render one cube for each position vectors using first texture
-        for (unsigned int i = 0; i < 5; i++)
+        for (unsigned int i = 0; i < 2; i++)
         {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
             if (i % 2 == 0)
                 angle = glfwGetTime() * 25.0f;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+//            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             ourShader.setMat4("model", model);
             // Use first texture
             glBindTexture(GL_TEXTURE_2D, texture1);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
         
-        for (unsigned int i = 5; i < 8; i++)
+        for (unsigned int i = 2; i < 5; i++)
         {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
             if (i % 2 == 0)
-                angle = glfwGetTime() * 25.0f;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            angle = glfwGetTime() * 25.0f;
+//            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             ourShader.setMat4("model", model);
             // Use first texture
             glBindTexture(GL_TEXTURE_2D, texture2);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+        glBindVertexArray(VAO2);
+        for (unsigned int i = 5; i < 9; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            if (i % 2 == 0)
+            angle = glfwGetTime() * 25.0f;
+//            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            ourShader.setMat4("model", model);
+            // Use first texture
+            glBindTexture(GL_TEXTURE_2D, texture3);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
