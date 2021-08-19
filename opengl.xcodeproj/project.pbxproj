@@ -30,6 +30,10 @@
 		C36EBD7E26C1B2DE005948E7 /* texture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture2.jpg; sourceTree = "<group>"; };
 		C36EBD7F26C1B2E9005948E7 /* shader_exercise10.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise10.fs; sourceTree = "<group>"; };
 		C36EBD8026C1B2E9005948E7 /* shader_exercise10.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise10.vs; sourceTree = "<group>"; };
+		C36FF49026CE026A00E94B23 /* shader_exercise13_colors.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise13_colors.fs; sourceTree = "<group>"; };
+		C36FF49126CE026A00E94B23 /* shader_exercise13_colors.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise13_colors.vs; sourceTree = "<group>"; };
+		C36FF49226CE026A00E94B23 /* shader_exercise13_lightcube.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise13_lightcube.vs; sourceTree = "<group>"; };
+		C36FF49326CE026A00E94B23 /* shader_exercise13_lightcube.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise13_lightcube.fs; sourceTree = "<group>"; };
 		C398410526CDC011006A9866 /* shader_exercise11.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise11.vs; sourceTree = "<group>"; };
 		C398410626CDC011006A9866 /* shader_exercise11.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise11.fs; sourceTree = "<group>"; };
 		C398410726CDC0B9006A9866 /* tnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tnt.png; sourceTree = "<group>"; };
@@ -92,6 +96,10 @@
 		C3DFABD926A917410008B6FD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				C36FF49026CE026A00E94B23 /* shader_exercise13_colors.fs */,
+				C36FF49126CE026A00E94B23 /* shader_exercise13_colors.vs */,
+				C36FF49326CE026A00E94B23 /* shader_exercise13_lightcube.fs */,
+				C36FF49226CE026A00E94B23 /* shader_exercise13_lightcube.vs */,
 				C398410626CDC011006A9866 /* shader_exercise11.fs */,
 				C398410526CDC011006A9866 /* shader_exercise11.vs */,
 				C36EBD7F26C1B2E9005948E7 /* shader_exercise10.fs */,
