@@ -30,6 +30,13 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+// Ligth settings
+glm::vec3 lightPos1(1.2f, 1.0f, 2.0f);
+glm::vec3 lightPos2(-1.2f, 1.0f, -2.0f);
+
+glm::vec4 ligthPos1Color (0.7f , 0.5f, 0.2f, 1.0f); //white
+glm::vec4 ligthPos2Color (0.6f , 0.4f, 0.8f, 10.f); //red
+
 int main()
 {
     glfwInit();
@@ -64,6 +71,7 @@ int main()
     
     // Load Shaders
     Shader ourShader("shaders/shader_exercise11.vs", "shaders/shader_exercise11.fs");
+    Shader lightCubeShader("shaders/shader_exercise13_lightcube.vs", "shaders/shader_exercise13_lightcube.fs");
     
     // Setup position vectors
     float vertices[] = {
@@ -121,36 +129,36 @@ int main()
     float vertices_2[] = {
     // positions          // texture coords
     //CARA ATRÁS
-    -0.5f, -0.5f, -0.5f,  0.252, 0.238f,
-     0.5f, -0.5f, -0.5f,  0.048, 0.238f,
-     0.5f,  0.5f, -0.5f,  0.048f, 0.51f,
-    0.5f,  0.5f, -0.5f,  0.048f, 0.51f,
-    -0.5f,  0.5f, -0.5f,  0.252f, 0.51f,
-    -0.5f, -0.5f, -0.5f,  0.252, 0.238f,
+    -0.5f, -0.5f, -0.5f,  0.28f, 0.33f,
+     0.5f, -0.5f, -0.5f,  0.048f, 0.33f,
+     0.5f,  0.5f, -0.5f,  0.048f, 0.68f,
+    0.5f,  0.5f, -0.5f,  0.048f, 0.68f,
+    -0.5f,  0.5f, -0.5f,  0.28f, 0.68f,
+    -0.5f, -0.5f, -0.5f,  0.28f, 0.33f,
 
     //CARA FRONTAL
-    -0.5f, -0.5f,  0.5f,  0.454f, 0.238f,
-     0.5f, -0.5f,  0.5f,  0.659f, 0.238f,
-     0.5f,  0.5f,  0.5f,  0.659f, 0.51f,
-    0.5f,  0.5f,  0.5f,  0.659f, 0.51f,
-    -0.5f,  0.5f,  0.5f,  0.454f, 0.51f,
-    -0.5f, -0.5f,  0.5f,  0.454f, 0.238f,
+    -0.5f, -0.5f,  0.5f,  0.5f, 0.33f,
+     0.5f, -0.5f,  0.5f,  0.73f, 0.33f,
+     0.5f,  0.5f,  0.5f,  0.73f, 0.68f,
+    0.5f,  0.5f,  0.5f,  0.73, 0.68f,
+    -0.5f,  0.5f,  0.5f,  0.5f, 0.68f,
+    -0.5f, -0.5f,  0.5f,  0.5f, 0.33f,
 
     //CARA IZQUIERDA
-    -0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
-    -0.5f,  0.5f, -0.5f,  0.454f, 0.238f,
-    -0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
-    -0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
-    -0.5f, -0.5f,  0.5f,  0.454f, 0.51f,
-    -0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
+    -0.5f,  0.5f,  0.5f,  0.73f, 0.68f,
+    -0.5f,  0.5f, -0.5f,  0.5f, 0.68f,
+    -0.5f, -0.5f, -0.5f,  0.5f, 0.33f,
+    -0.5f, -0.5f, -0.5f,  0.5f, 0.33f,
+    -0.5f, -0.5f,  0.5f,  0.73f, 0.33f,
+    -0.5f,  0.5f,  0.5f,  0.73f, 0.68f,
 
     //CARA DERECHA
-     0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
-     0.5f,  0.5f, -0.5f,  0.454f, 0.238f,
-     0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
-     0.5f, -0.5f, -0.5f,  0.659f, 0.51f,
-     0.5f, -0.5f,  0.5f,  0.454f, 0.51f,
-     0.5f,  0.5f,  0.5f,  0.454f, 0.238f,
+     0.5f,  0.5f,  0.5f,  0.5f, 0.68f,
+     0.5f,  0.5f, -0.5f,  0.73f, 0.68f,
+     0.5f, -0.5f, -0.5f,  0.73f, 0.33f,
+     0.5f, -0.5f, -0.5f,  0.73f, 0.33f,
+     0.5f, -0.5f,  0.5f,  0.5f, 0.33f,
+     0.5f,  0.5f,  0.5f,  0.5f, 0.68f,
 
 
      //CARA ABAJO
@@ -162,12 +170,12 @@ int main()
     -0.5f, -0.5f, -0.5f,  0.454, 0.32f,
 
     //CARA ARRIBA
-    -0.5f,  0.5f, -0.5f,  0.454f, 0.510f,
-     0.5f,  0.5f, -0.5f,  0.659f, 0.510f,
-     0.5f,  0.5f,  0.5f,  0.659f, 0.713f,
-    0.5f,  0.5f,  0.5f,  0.659f, 0.713f,
-    -0.5f,  0.5f,  0.5f,  0.454f, 0.713f,
-    -0.5f,  0.5f, -0.5f,  0.454f, 0.510f,
+    -0.5f,  0.5f, -0.5f,  0.659f, 0.238f,
+     0.5f,  0.5f, -0.5f,  0.859f, 0.238f,
+     0.5f,  0.5f,  0.5f,  0.859f, 0.713f,
+    0.5f,  0.5f,  0.5f,  0.859f, 0.713f,
+    -0.5f,  0.5f,  0.5f,  0.659f, 0.713f,
+        -0.5f,  0.5f, -0.5f,  0.659f, 0.238f,
     };
 
     // Define world positions for each cubes
@@ -179,7 +187,7 @@ int main()
         glm::vec3(2.4f, -0.4f, -3.5f),
         glm::vec3(-1.7f,  3.0f, -7.5f),
         glm::vec3(1.3f, -2.0f, -2.5f),
-        glm::vec3(1.0f,  3.0f, -2.5f),
+        glm::vec3(1.5f,  3.0f, -2.5f),
         glm::vec3(1.5f,  5.0f, -1.5f)
     };
 
@@ -198,7 +206,17 @@ int main()
     // Texture coord attribute
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+
     
+    //configure light VAO
+    unsigned int lightCubeVAO;
+    glGenVertexArrays(1, &lightCubeVAO);
+    glBindVertexArray(lightCubeVAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
     
     unsigned int VAO2, VBO2;
     // Init VAO and VBO
@@ -344,14 +362,55 @@ int main()
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
-            if (i % 2 == 0)
-            angle = glfwGetTime() * 25.0f;
-//            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            if (i == 5) {
+                angle = glfwGetTime() * 25.0f;
+                model = glm::rotate(model, glm::radians(-1.0f * angle), glm::vec3(1.0f, 0.0f, 0.0f));
+            }
+            
+            if (i ==6 || i == 7) {
+                float timeValue = glfwGetTime()*3;
+                float dinamicValue1 = sin(timeValue) / 2.0f + 0.5f;
+                float dinamicValue2 = cos(timeValue) / 2.0f + 0.5f;
+                model = glm::translate(model, glm::vec3(dinamicValue1 * 5.0f, 0.0f, dinamicValue2 *5.0f ));
+            }
+            
+            if (i == 8) {
+                angle = glfwGetTime() * 25.0f;
+                model = glm::rotate(model, glm::radians(-1.0f * angle), glm::vec3(0.0f, 1.0f, 0.0f));
+            }
+            
             ourShader.setMat4("model", model);
             // Use first texture
             glBindTexture(GL_TEXTURE_2D, texture3);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
+        
+        
+        lightCubeShader.use();
+        glm::mat4 model = glm::mat4(1.0f);
+        lightCubeShader.setMat4("projection", projection);
+        lightCubeShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos2);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        lightCubeShader.setMat4("model", model);
+        lightCubeShader.setVec4("ligthColor", ligthPos2Color);
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        
+        
+        // cube 2
+        lightCubeShader.use();
+        glm::mat4 model2 = glm::mat4(1.0f);
+        lightCubeShader.setMat4("projection", projection);
+        lightCubeShader.setMat4("view", view);
+        model2 = glm::mat4(1.0f);
+        model2 = glm::translate(model2, lightPos1);
+        model2 = glm::scale(model2, glm::vec3(0.2f)); // a smaller cube
+        lightCubeShader.setMat4("model", model2);
+        lightCubeShader.setVec4("ligthColor", ligthPos1Color);
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
