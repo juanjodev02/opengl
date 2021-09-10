@@ -26,19 +26,21 @@
 
 /* Begin PBXFileReference section */
 		C36EBD7B26C1B193005948E7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C3BAA75C26EBBC3F006C3E1F /* shader_exercise14t2_materials.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t2_materials.fs; sourceTree = "<group>"; };
-		C3BAA75D26EBBC40006C3E1F /* shader_exercise14t1_materials.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t1_materials.fs; sourceTree = "<group>"; };
-		C3BAA75E26EBBC40006C3E1F /* shader_exercise14t4_materials.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t4_materials.vs; sourceTree = "<group>"; };
-		C3BAA75F26EBBC40006C3E1F /* shader_exercise14t3_materials.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t3_materials.vs; sourceTree = "<group>"; };
-		C3BAA76026EBBC40006C3E1F /* shader_exercise14t2_materials.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t2_materials.vs; sourceTree = "<group>"; };
-		C3BAA76126EBBC40006C3E1F /* shader_exercise14_lightcube.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14_lightcube.vs; sourceTree = "<group>"; };
-		C3BAA76226EBBC40006C3E1F /* shader_exercise14_lightcube.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14_lightcube.fs; sourceTree = "<group>"; };
-		C3BAA76326EBBC40006C3E1F /* shader_exercise14t1_materials.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t1_materials.vs; sourceTree = "<group>"; };
-		C3BAA76426EBBC40006C3E1F /* shader_exercise14t3_materials.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t3_materials.fs; sourceTree = "<group>"; };
-		C3BAA76526EBBC40006C3E1F /* shader_exercise14t4_materials.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise14t4_materials.fs; sourceTree = "<group>"; };
 		C3BAA76626EBBC47006C3E1F /* matrix.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = matrix.jpg; sourceTree = "<group>"; };
 		C3BAA76726EBBC47006C3E1F /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
 		C3BAA76826EBBC47006C3E1F /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
+		C3BAA76926EBCC9E006C3E1F /* shader_exercise15t1_casters.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t1_casters.vs; sourceTree = "<group>"; };
+		C3BAA76A26EBCC9E006C3E1F /* shader_exercise15_lightcube.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15_lightcube.vs; sourceTree = "<group>"; };
+		C3BAA76B26EBCC9E006C3E1F /* shader_exercise15t2_casters.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t2_casters.vs; sourceTree = "<group>"; };
+		C3BAA76C26EBCC9E006C3E1F /* shader_exercise15t3_casters.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t3_casters.fs; sourceTree = "<group>"; };
+		C3BAA76D26EBCC9E006C3E1F /* shader_exercise15t3_casters.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t3_casters.vs; sourceTree = "<group>"; };
+		C3BAA76E26EBCC9E006C3E1F /* shader_exercise15t4_casters.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t4_casters.fs; sourceTree = "<group>"; };
+		C3BAA76F26EBCC9E006C3E1F /* shader_exercise15t5_casters.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t5_casters.fs; sourceTree = "<group>"; };
+		C3BAA77026EBCC9E006C3E1F /* shader_exercise15_lightcube.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15_lightcube.fs; sourceTree = "<group>"; };
+		C3BAA77126EBCC9E006C3E1F /* shader_exercise15t5_casters.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t5_casters.vs; sourceTree = "<group>"; };
+		C3BAA77226EBCC9E006C3E1F /* shader_exercise15t4_casters.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t4_casters.vs; sourceTree = "<group>"; };
+		C3BAA77326EBCC9E006C3E1F /* shader_exercise15t2_casters.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t2_casters.fs; sourceTree = "<group>"; };
+		C3BAA77426EBCC9E006C3E1F /* shader_exercise15t1_casters.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_exercise15t1_casters.fs; sourceTree = "<group>"; };
 		C3DFABCA26A915D30008B6FD /* opengl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = opengl; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DFABD526A916C20008B6FD /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.4/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		C3DFABD726A916FF0008B6FD /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
@@ -95,16 +97,18 @@
 		C3DFABD926A917410008B6FD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				C3BAA76226EBBC40006C3E1F /* shader_exercise14_lightcube.fs */,
-				C3BAA76126EBBC40006C3E1F /* shader_exercise14_lightcube.vs */,
-				C3BAA75D26EBBC40006C3E1F /* shader_exercise14t1_materials.fs */,
-				C3BAA76326EBBC40006C3E1F /* shader_exercise14t1_materials.vs */,
-				C3BAA75C26EBBC3F006C3E1F /* shader_exercise14t2_materials.fs */,
-				C3BAA76026EBBC40006C3E1F /* shader_exercise14t2_materials.vs */,
-				C3BAA76426EBBC40006C3E1F /* shader_exercise14t3_materials.fs */,
-				C3BAA75F26EBBC40006C3E1F /* shader_exercise14t3_materials.vs */,
-				C3BAA76526EBBC40006C3E1F /* shader_exercise14t4_materials.fs */,
-				C3BAA75E26EBBC40006C3E1F /* shader_exercise14t4_materials.vs */,
+				C3BAA77026EBCC9E006C3E1F /* shader_exercise15_lightcube.fs */,
+				C3BAA76A26EBCC9E006C3E1F /* shader_exercise15_lightcube.vs */,
+				C3BAA77426EBCC9E006C3E1F /* shader_exercise15t1_casters.fs */,
+				C3BAA76926EBCC9E006C3E1F /* shader_exercise15t1_casters.vs */,
+				C3BAA77326EBCC9E006C3E1F /* shader_exercise15t2_casters.fs */,
+				C3BAA76B26EBCC9E006C3E1F /* shader_exercise15t2_casters.vs */,
+				C3BAA76C26EBCC9E006C3E1F /* shader_exercise15t3_casters.fs */,
+				C3BAA76D26EBCC9E006C3E1F /* shader_exercise15t3_casters.vs */,
+				C3BAA76E26EBCC9E006C3E1F /* shader_exercise15t4_casters.fs */,
+				C3BAA77226EBCC9E006C3E1F /* shader_exercise15t4_casters.vs */,
+				C3BAA76F26EBCC9E006C3E1F /* shader_exercise15t5_casters.fs */,
+				C3BAA77126EBCC9E006C3E1F /* shader_exercise15t5_casters.vs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
