@@ -7,6 +7,7 @@
 
 #include <learnopengl/shader.h>
 #include <learnopengl/camera.h>
+#include <learnopengl/model.h>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <learnopengl/stb_image.h>
@@ -52,7 +53,7 @@ int main()
 
     // glfw window creation
     // --------------------
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Exercise 15 Task 5", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Juan Jaramillo | Lesly Tipanluiza", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -84,76 +85,38 @@ int main()
     // ------------------------------------
     Shader lightingShader("shaders/shader_exercise15t5_casters.vs", "shaders/shader_exercise15t5_casters.fs");
     Shader lightCubeShader("shaders/shader_exercise15_lightcube.vs", "shaders/shader_exercise15_lightcube.fs");
+    Shader modelShader("shaders/shader_exercise16_mloading.vs", "shaders/shader_exercise16_mloading.fs");
+    
+    Model sidewalk("models/sidewalk/sidewalk.obj");
+    Model lamppost("models/lamppost/lamppost.obj");
+    Model building_1("models/building/building.obj");
+    Model forest("models/forest/forest.obj");
+    Model ruinas("models/pestkapelle/pestkapelle.obj");
+    Model house("models/house/house.obj");
+    Model moon("models/moon/moon.obj");
+    Model cart("models/cart/cart.obj");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
 
  float vertices[] = {
         // positions          // normals           // texture coords
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
-
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
-
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
+        -0.5f, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+         0.5f, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
+         0.5f,  0.0f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+        0.5f,  0.0f, -0.5f, 0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+        -0.5f,  0.0f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
+        -0.5f, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
     };
 
-//positions all containers
-glm::vec3 cubePositions[] = {
-        glm::vec3( 0.0f,  0.0f,  0.0f),
-        glm::vec3( 2.0f,  5.0f, -15.0f),
-        glm::vec3(-1.5f, -2.2f, -2.5f),
-        glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f,  3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f,  2.0f, -2.5f),
-        glm::vec3( 1.5f,  0.2f, -1.5f),
-        glm::vec3(-1.3f,  1.0f, -1.5f)
-    };
 
 //Exercise 15 Task 5
 // positions of the point lights
     glm::vec3 pointLightPositions[] = {
-        glm::vec3( 0.7f,  0.2f,  2.0f),
+        glm::vec3( 0.6f,  1.27f,  1.0f),
         glm::vec3( 2.3f, -3.3f, -4.0f),
         glm::vec3(-4.0f,  2.0f, -12.0f),
-        glm::vec3( 0.0f,  0.0f, -3.0f)
+        glm::vec3( 10.0f,  1.0f, -3.0f)
     };
     
  // first, configure the cube's VAO (and VBO)
@@ -186,8 +149,8 @@ glm::vec3 cubePositions[] = {
 
  // load textures (we now use a utility function to keep the code more organized)
     // -----------------------------------------------------------------------------
-    unsigned int diffuseMap = loadTexture("textures/container2.png");
-    unsigned int specularMap = loadTexture("textures/container2_specular.png");
+    unsigned int diffuseMap = loadTexture("textures/street.jpg");
+    unsigned int specularMap = loadTexture("textures/street.png");
     
     // shader configuration
     // --------------------
@@ -212,10 +175,11 @@ glm::vec3 cubePositions[] = {
 
      // render
      // ------
-     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+     
      // be sure to activate shader when setting uniforms/drawing objects
+
      lightingShader.use();
      lightingShader.setVec3("viewPos", camera.Position);
      lightingShader.setFloat("material.shininess", 32.0f);
@@ -228,7 +192,7 @@ glm::vec3 cubePositions[] = {
     by defining light types as classes and set their values in there, or by using a more efficient uniform approach
     by using 'Uniform buffer objects'.
     */
-        // directional light
+         //directional light
         lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
         lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
         lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
@@ -257,7 +221,7 @@ glm::vec3 cubePositions[] = {
         lightingShader.setFloat("pointLights[2].constant", 1.0f);
         lightingShader.setFloat("pointLights[2].linear", 0.09);
         lightingShader.setFloat("pointLights[2].quadratic", 0.032);
-        // point light 4
+         //point light 4
         lightingShader.setVec3("pointLights[3].position", pointLightPositions[3]);
         lightingShader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
         lightingShader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
@@ -288,7 +252,6 @@ glm::vec3 cubePositions[] = {
      glm::mat4 model = glm::mat4(1.0f);
      lightingShader.setMat4("model", model);
      
-     
      // bind diffuse map
      glActiveTexture(GL_TEXTURE0);
      glBindTexture(GL_TEXTURE_2D, diffuseMap);
@@ -298,38 +261,141 @@ glm::vec3 cubePositions[] = {
      glActiveTexture(GL_TEXTURE1);
      glBindTexture(GL_TEXTURE_2D, specularMap);
 
-
-     //Exercise 15 Task 1
-     //render containers
      glBindVertexArray(cubeVAO);
-     for (unsigned int i = 0; i < 10; i++){
-        //calculate the model matrix for each object and pass it to the shader before drawing
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, cubePositions[i]);
-        float angle = 20.0f * i;
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+     
+     int streetRepeat = 40;
+
+     // RENDER STREET
+     float initalStreetPosition = 4.0f;
+     
+     for (unsigned int i = 0; i < streetRepeat; i++){
+        glm::mat4 model2 = glm::mat4(1.0f);
+        model = glm::translate(model2, glm::vec3( 0.0f,  -0.3f, initalStreetPosition));
         lightingShader.setMat4("model", model);
         
         glDrawArrays(GL_TRIANGLES, 0, 36);
+         model2 = glm::mat4(1.0f);
+         model = glm::translate(model2, glm::vec3( 1.0f,  -0.3f, initalStreetPosition));
+         lightingShader.setMat4("model", model);
+         
+         glDrawArrays(GL_TRIANGLES, 0, 36);
+         
+         model2 = glm::mat4(1.0f);
+         model = glm::translate(model2, glm::vec3( 2.0f,  -0.3f, initalStreetPosition));
+          initalStreetPosition -= 0.5f;
+         lightingShader.setMat4("model", model);
+         
+         glDrawArrays(GL_TRIANGLES, 0, 36);
      }
 
-     //Exercise 15 Task 5
-         // also draw the lamp object(s)
-         lightCubeShader.use();
-         lightCubeShader.setMat4("projection", projection);
-         lightCubeShader.setMat4("view", view);
-    
-         // we now draw as many light bulbs as we have point lights.
-         glBindVertexArray(lightCubeVAO);
-         for (unsigned int i = 0; i < 4; i++)
-         {
-             model = glm::mat4(1.0f);
-             model = glm::translate(model, pointLightPositions[i]);
-             model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-             lightCubeShader.setMat4("model", model);
-             glDrawArrays(GL_TRIANGLES, 0, 36);
-         }
+//        //RENDER LIGHTS
+//         lightCubeShader.use();
+//         lightCubeShader.setMat4("projection", projection);
+//         lightCubeShader.setMat4("view", view);
+//         glBindVertexArray(lightCubeVAO);
+//         for (unsigned int i = 0; i < 4; i++)
+//         {
+//             model = glm::mat4(1.0f);
+//             model = glm::translate(model, pointLightPositions[i]);
+//             model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+//             lightCubeShader.setMat4("model", model);
+//             glDrawArrays(GL_TRIANGLES, 0, 36);
+//         }
      
+        //RENDER SIDEWALKS
+         modelShader.use();
+         modelShader.setMat4("projection", projection);
+         modelShader.setMat4("view", view);
+     float inital = 3.1f;
+     for (unsigned int i = 0; i < streetRepeat / 2; i++){
+        //calculate the model matrix for each object and pass it to the shader before drawing
+         glm::mat4 model3 = glm::mat4(1.0f);
+         model3 = glm::translate(model3, glm::vec3(2.5f,  -0.3f, inital));
+         inital -= 1.0f;
+         model3 = glm::rotate(model3, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model3 = glm::scale(model3, glm::vec3(0.04f, 0.04f, 0.04f));
+         modelShader.setMat4("model", model3);
+         sidewalk.Draw(modelShader);
+     }
+     
+     inital = 4.0f;
+     
+     for (unsigned int i = 0; i < streetRepeat / 2; i++){
+         glm::mat4 model3 = glm::mat4(1.0f);
+        //calculate the model matrix for each object and pass it to the shader before drawing
+         model3 = glm::translate(model3, glm::vec3(-0.5f,  -0.3f, inital));
+         inital -= 1.0f;
+         model3 = glm::rotate(model3, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model3 = glm::scale(model3, glm::vec3(0.04f, 0.04f, 0.04f));
+         modelShader.setMat4("model", model3);
+         sidewalk.Draw(modelShader);
+     }
+     // RENDER LAMPPOST 1
+     glm::mat4 model3 = glm::mat4(1.0f);
+     model3 = glm::translate(model3, glm::vec3(2.7f,  -0.3f, 1.0f));
+     model3 = glm::scale(model3, glm::vec3(0.04f, 0.04f, 0.04f));
+     modelShader.setMat4("model", model3);
+     lamppost.Draw(modelShader);
+     
+     // RENDER LAMPPOST 2
+     glm::mat4 model7 = glm::mat4(1.0f);
+     model7 = glm::translate(model7, glm::vec3(2.7f,  -0.3f, (-streetRepeat * 0.5f) + 17.0f));
+     model7 = glm::scale(model7, glm::vec3(0.04f, 0.04f, 0.04f));
+     modelShader.setMat4("model", model7);
+     lamppost.Draw(modelShader);
+     
+     // RENDER LAMPPOST 3
+     glm::mat4 model8 = glm::mat4(1.0f);
+     model8 = glm::translate(model8, glm::vec3(2.7f,  -0.3f, (-streetRepeat * 0.5f) + 10.0f));
+     model8 = glm::scale(model8, glm::vec3(0.04f, 0.04f, 0.04f));
+     modelShader.setMat4("model", model8);
+     lamppost.Draw(modelShader);
+     
+     // RENDER BUILD
+     glm::mat4 model4 = glm::mat4(1.0f);
+     model4 = glm::translate(model4, glm::vec3(-1.5f,  -0.5f, 1.0f));
+     model4 = glm::scale(model4, glm::vec3(0.2f, 0.2f, 0.2f));
+     modelShader.setMat4("model", model4);
+     building_1.Draw(modelShader);
+     
+     // RENDER FOREST
+     glm::mat4 model5 = glm::mat4(1.0f);
+     model5 = glm::translate(model5, glm::vec3(-1.0f,  -0.5f, 1.0f));
+     model5 = glm::scale(model5, glm::vec3(0.5f, 0.5f, 0.5f));
+     model5 = glm::rotate(model5, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+     modelShader.setMat4("model", model5);
+     forest.Draw(modelShader);
+     
+     // RENDER RUINAS
+     glm::mat4 model6 = glm::mat4(1.0f);
+     model6 = glm::translate(model6, glm::vec3(0.6f,  -0.7f, (-streetRepeat * 0.5f) + 5.0f));
+     model6 = glm::scale(model6, glm::vec3(0.7f, 0.7f, 0.7f));
+     model6 = glm::rotate(model6, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+     modelShader.setMat4("model", model6);
+     ruinas.Draw(modelShader);
+     
+     // RENDER HOUSE
+     glm::mat4 model9 = glm::mat4(1.0f);
+     model9 = glm::translate(model9, glm::vec3(-2.0f,  -0.3f, (-streetRepeat * 0.5f) + 18.0f));
+     model9 = glm::scale(model9, glm::vec3(0.2f, 0.2f, 0.2f));
+     model9 = glm::rotate(model9, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+     modelShader.setMat4("model", model9);
+     house.Draw(modelShader);
+     
+     // RENDER MOON
+     glm::mat4 model10 = glm::mat4(1.0f);
+     model10 = glm::translate(model10, glm::vec3(-3.0f, 20.0f, -40.0f));
+     model10 = glm::scale(model10, glm::vec3(0.1f, 0.1f, 0.1f));
+     modelShader.setMat4("model", model10);
+     moon.Draw(modelShader);
+     
+     // RENDER CART
+     glm::mat4 model11 = glm::mat4(1.0f);
+     model11 = glm::translate(model11, glm::vec3(2.0f,  -0.17f, (-streetRepeat * 0.5f) + 18.0f));
+     model11 = glm::scale(model11, glm::vec3(0.3f, 0.3f, 0.3f));
+     model11 = glm::rotate(model11, glm::radians(35.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+     modelShader.setMat4("model", model11);
+     cart.Draw(modelShader);
 
      // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
      // -------------------------------------------------------------------------------
